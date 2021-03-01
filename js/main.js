@@ -34,3 +34,16 @@ var listaNumeri = genRandPerN(1, 100, 16);
 listaNumeri.sort(function(a, b){return a-b});
 // e lo stampo per controllare che tutto funzioni
 console.log(listaNumeri);
+
+
+/* In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100. */
+// L’utente non può inserire più volte lo stesso numero.
+var userList = [];
+
+for (var i = 0; i < (100 - 16); i++) {
+    do {
+    userNum = parseInt(prompt("Inserisci un numero tra 1 e 100 e che non sia già stato inserito"));
+    } while ((userList.includes(userNum)) || (userNum < 1) || (userNum > 100));
+    userList[i] = userNum;
+    console.log(userList[i]);
+}
