@@ -17,22 +17,20 @@ function genRandPerN (nuMin, nuMax, nuNum) {
     var geNum;
 // Creo un ciclo for che girerà tante volte quanti saranno i numeri da generare
     for (var a = 0; a < nuNum; a++) {
+// Farò generare un numero incluso nel range, finché risulterà incluso nell'array
+      do {
         geNum = Math.floor(Math.random()*nuMax+nuMin);
-// Includo un secondo ciclo for per confrontare il numero generato con quelli già presenti nell'array
-        for (var b = 0; b < nuList.length; b++) {
-// Verrà generato un nuovo numerò finché non sarà diverso da quelli già presenti
-            do {
-                geNum = Math.floor(Math.random()*nuMax+nuMin);
-            } while (geNum == nuList[b])
-        }
-// Inserisco in posizione "a" il numero univoco ottenuto
-        nuList[a] = geNum;
+      } while (nuList.includes(geNum));
+// a quel punto lo inserirò nella posizione "a" dell'array
+      nuList[a] = geNum;
     }
-// Restituisco il risultato ordinato della funzione...
+// Restituisco il risultato della funzione...
     return nuList;
 }
 
-// che andrò a inserire in un array con scope globale
+// ...che andrò a inserire in un array con scope globale, definito dagli argomenti richiesti in traccia
 var listaNumeri = genRandPerN(1, 100, 16);
-// Stampo l'array per controllare che tutto funzioni
+// ordino il nuovo array
+listaNumeri.sort(function(a, b){return a-b});
+// e lo stampo per controllare che tutto funzioni
 console.log(listaNumeri);
