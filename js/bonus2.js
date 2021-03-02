@@ -9,68 +9,64 @@ do {
     var livello = prompt("Scegli il livello di difficoltà (FACILE / INTERMEDIO / DIFFICILE").toUpperCase();
 } while ((livello != "FACILE") && (livello != "INTERMEDIO") && (livello != "DIFFICILE"));
 
-
 switch (dimCampo) {
     case "PICCOLO":
         spazi = 16;
+        switch (livello) {
+            case "FACILE":
+            mine = 3;
+            break;
+            case "INTERMEDIO":
+            mine = 6;
+            break;
+            case "DIFFICILE":
+            mine = 9;
+            break;
+            default:
+            alert("Non hai selezionato correttamente il livello di difficoltà");
+        }
         break;
     case "MEDIO":
         spazi = 64;
+        switch (livello) {
+            case "FACILE":
+            mine = 12;
+            break;
+            case "INTERMEDIO":
+            mine = 25;
+            break;
+            case "DIFFICILE":
+            mine = 38;
+            break;
+            default:
+            alert("Non hai selezionato correttamente il livello di difficoltà");
+        }       
         break;
     case "GRANDE":
         spazi = 100;
+        switch (livello) {
+            case "FACILE":
+            mine = 20;
+            break;
+            case "INTERMEDIO":
+            mine = 40;
+            break;
+            case "DIFFICILE":
+            mine = 60;
+            break;
+            default:
+            alert("Non hai selezionato correttamente il livello di difficoltà");
+        }        
         break;
     default: 
         alert("Non hai selezionato correttamente la dimensione del campo di gioco");
 }
 
-switch (livello) {
-    case "FACILE":
-        switch (dimCampo) {
-            case "PICCOLO":
-                mine = 3;
-                break;
-            case "MEDIO":
-                mine = 12;
-                break;
-            case "GRANDE":
-                mine = 20;
-                break;
-            default:
-                mine = spazi;
-        }
-    case "INTERMEDIO":
-        switch (dimCampo) {
-            case "PICCOLO":
-                mine = 6;
-                break;
-            case "MEDIO":
-                mine = 25;
-                break;
-            case "GRANDE":
-                mine = 40;
-                break;
-            default:
-                mine = spazi;
-        }
-    case "DIFFICILE":
-        switch (dimCampo) {
-            case "PICCOLO":
-                mine = 9;
-                break;
-            case "MEDIO":
-                mine = 38;
-                break;
-            case "GRANDE":
-                mine = 60;
-                break;
-            default:
-                mine = spazi;
-        }
-
-}
-
 console.log("Dimensione campo di gioco: "+dimCampo+" - Livello: "+livello);
+
+// stabilisco il livello di difficoltà e la dimensione del campo
+var campo = mineFieldGen(mine, spazi);
+console.log(campo);
 
 // definisco un generatore di campi minati che varieranno per livello di difficoltà e dimensione
 function mineFieldGen(level, size) {
@@ -89,11 +85,6 @@ function mineFieldGen(level, size) {
 // restituisco il campo minato generato
     return field;
 }
-
-// stabilisco il livello di difficoltà e la dimensione del campo
-var campo = mineFieldGen(mine, spazi);
-console.log(campo);
-
 
 // definisco una variabile che andrà a contenere la posizione della bandierina desiderata dall'utente
 var flagPosition;
