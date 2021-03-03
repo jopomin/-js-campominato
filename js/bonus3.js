@@ -70,9 +70,9 @@ console.log(campo);
 
 for (var x = 0; x < campo.length; x++) {
     if (campo[x] == "🟩") {
-        document.getElementById("lista_utente").innerHTML += "<li id=\"prato\">🟩</li>";
+        document.getElementById("lista_utente").innerHTML += "<li id=\"casella_"+x+"\" class=\"prato\">🟩</li>";
     } else {
-        document.getElementById("lista_utente").innerHTML += "<li id=\"mina\">💣</li>";
+        document.getElementById("lista_utente").innerHTML += "<li id=\"casella_"+x+"\" class=\"mina\">💣</li>";
     }
 }
 
