@@ -12,6 +12,7 @@ do {
 switch (dimCampo) {
     case "PICCOLO":
         spazi = 16;
+        document.getElementById("lista_utente").className = ("piccolo");
         switch (livello) {
             case "FACILE":
             mine = 3;
@@ -28,6 +29,7 @@ switch (dimCampo) {
         break;
     case "MEDIO":
         spazi = 64;
+        document.getElementById("lista_utente").className = ("medio");
         switch (livello) {
             case "FACILE":
             mine = 12;
@@ -44,6 +46,7 @@ switch (dimCampo) {
         break;
     case "GRANDE":
         spazi = 100;
+        document.getElementById("lista_utente").className = ("grande");
         switch (livello) {
             case "FACILE":
             mine = 20;
@@ -120,7 +123,7 @@ do {
         console.log(campo[flagPosition] = "💥");
         document.getElementById("casella_"+flagPosition).innerHTML = "💥";
         console.log("GAME OVER! Hai fatto esplodere una mina!");
-        alert("💥 GAME OVER! Hai fatto esplodere una mina! "+campo)
+        alert("💥 GAME OVER! Hai fatto esplodere una mina!");
     } else {
 // altrimenti la bandierina sarà piazzata sul campo e inizierà un nuovo ciclo
         campo[flagPosition] = "🚩";
