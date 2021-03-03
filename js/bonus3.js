@@ -106,6 +106,7 @@ function mineFieldGen(level, size) {
 // definisco una variabile che andrà a contenere la posizione della bandierina desiderata dall'utente
 var flagPosition;
 var f = 0;
+var flagClass;
 
 // creo un ciclo che terminerà solo con la vittoria (tutte bandierine piazzate) o sconfitta dell'utente (mina esplosa)
 do {
@@ -115,13 +116,16 @@ do {
     } while (campo[flagPosition] == "🚩" || flagPosition < 0 || flagPosition >= spazi);
 // se l'utente piazza una bandierina in uno spazio occupato da una mina, questa ovviamente esploderà e il gioco termina.
     if (campo[flagPosition] == "💣") {
+        document.getElementById("casella_"+flagPosition).className = "boom";
         console.log(campo[flagPosition] = "💥");
+        document.getElementById("casella_"+flagPosition).innerHTML = "💥";
         console.log("GAME OVER! Hai fatto esplodere una mina!");
-        console.log(campo);
         alert("💥 GAME OVER! Hai fatto esplodere una mina! "+campo)
     } else {
 // altrimenti la bandierina sarà piazzata sul campo e inizierà un nuovo ciclo
         campo[flagPosition] = "🚩";
+        document.getElementById("casella_"+flagPosition).className = "flag";
+        document.getElementById("casella_"+flagPosition).innerHTML = "🚩";
         console.log(campo);
         f++;
     }
@@ -130,6 +134,12 @@ do {
 
 // se il numero di bandierine piazzate sarà pari al numero di spazi liberi da mine, l'utente ovviamente avrà vinto
 if (f == spazi-mine) {
+    for (var z = 0; z < campo.length; z++) {
+        if (campo[z] == "🚩") {
+            document.getElementById("casella_"+z).className = "win";
+            document.getElementById("casella_"+z).innerHTML = "😎";
+        }
+    }
     console.log("HAI VINTO! 😎 Sei riuscito a piazzare tutte le bandierine senza far esplodere il campo");
     alert("HAI VINTO! 😎 Sei riuscito a piazzare tutte le bandierine senza far esplodere il campo");
 }

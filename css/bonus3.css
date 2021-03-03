@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #27bdeb;
+    background: #cacaca;
     font-family: 'Work Sans', sans-serif;
     padding: 20px;
     position: relative;
@@ -26,6 +26,7 @@ body {
     align-items: center;
     width: 400px;
     height: 400px;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.1);
 }
 
 #lista_utente li {
@@ -51,4 +52,16 @@ body {
 
 .mina {
     background: #111525;
+}
+
+.flag {
+    background: #0084d1;
+}
+
+.boom {
+    background: #d12000;
+}
+
+.win {
+    background: #e0d100;
 }
