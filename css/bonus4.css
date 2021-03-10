@@ -68,6 +68,10 @@ body {
     background: #e0d100;
 }
 
+.saved {
+    background: #005ae0;
+}
+
 .cover {
     background: #32cd32;
     color: #167e16;

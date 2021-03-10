@@ -71,6 +71,7 @@ console.log("Dimensione campo di gioco: "+dimCampo+" - Livello: "+livello);
 var campo = mineFieldGen(mine, spazi);
 console.log(campo);
 
+
 for (var x = 0; x < campo.length; x++) {
     if (campo[x] == "🟩") {
         document.getElementById("field").innerHTML += "<li id=\"casella_"+x+"\" class=\"prato cover\">"+x+"</li>";
@@ -115,6 +116,7 @@ function mineFieldGen(level, size) {
 
 var flagsNumber = 0;
 var esploso = false;
+console.log($('#field'));
 
     $("#field li[id^=\"casella_\"]").click(
         function() {
@@ -123,6 +125,11 @@ var esploso = false;
                 $(this).addClass("flag");
                 $(this).html("🚩");
                 flagsNumber++;
+                if (flagsNumber == (spazi-mine)) {
+                    $("#field li[id^=\"casella_\"].flag").toggleClass("flag win").html("😎");
+                    $("#field li[id^=\"casella_\"].mina").removeClass("cover mina").addClass("saved").html("💣");
+                    alert("HAI VINTO! 😎 Sei riuscito a piazzare tutte le bandierine senza far esplodere il campo");
+                }
             }
             else if ($(this).hasClass('flag')) {
                 alert("Hai già messo al sicuro questa zona");
@@ -144,14 +151,16 @@ var esploso = false;
             else if ($(this).hasClass('terreno')) {
                 alert("Era qui che dovevi piazzare la bandierina...🤦‍♂️");
             }
+            else if ($(this).hasClass('saved')) {
+                alert("Hai vinto, la mina non può più scoppiare");
+            }
+            else if ($(this).hasClass('win')) {
+                alert("Hai vinto, goditi questo momento");
+            }
         }
-    )
+        )
+        
 
-/* if (flagsNumber == (spazi-mine)) {
-    $(("#field li[id^=\"casella_\"].flag").toggleClass("flag win")).html("😎");
-    $(("#field li[id^=\"casella_\"].flag").toggleClass("cover mina")).html("💣");
-    alert("HAI VINTO! 😎 Sei riuscito a piazzare tutte le bandierine senza far esplodere il campo");
-} */
 
 
 
